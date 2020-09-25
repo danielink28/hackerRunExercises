@@ -6,14 +6,20 @@ import (
 )
 
 func main() {
-	values := []int32{73, 67, 38, 33}
+
+	values := []int32{99, 40, 53, 31, 92, 68, 17, 70, 100, 16, 26, 82, 72, 89, 19, 14, 56, 7, 26, 69, 8, 44, 51, 88, 24, 34, 40, 70, 90, 68, 95, 95, 28, 39, 71, 75, 31, 17, 96, 60, 98, 98, 33, 35, 68, 84, 17, 11, 76, 17, 45, 61, 72, 76, 18, 67, 55, 81, 57, 43, 45, 96, 58, 49, 4, 61, 38, 66, 82, 16, 44, 100, 50, 19, 82, 15, 72, 5, 81, 97, 94, 70, 7, 92, 75, 55, 1, 87, 4, 9, 92, 35, 83, 20, 53, 8, 90, 2, 92, 82}
 	//plusMinus(values)
 	//staircase(66)
 	//miniMaxSum(values)
 	//candles := birthdayCakeCandles(values)
 
-	students := gradingStudents(values)
-	println(students)
+	//students := gradingStudents(values)
+
+	values2 := []int32{1, 3, 2, 6, 1, 2}
+	pairs := divisibleSumPairs(100, 32, values)
+	pairs2 := divisibleSumPairs(6, 3, values2)
+	fmt.Println(pairs)
+	fmt.Print(pairs2)
 }
 
 /*
@@ -148,7 +154,6 @@ func gradingStudents(grades []int32) (result []int32) {
 	return result
 }
 
-
 func simpleArraySum(ar []int64) int64 {
 	var result int64
 	for i := 0; i < len(ar); i++ {
@@ -177,14 +182,28 @@ func diagonalDifference(arr [][]int32) int32 {
 	var right int32
 	var left int32
 
-	var indiceLeft = len(arr)-1
+	var indiceLeft = len(arr) - 1
 
 	for i := 0; i < len(arr); i++ {
-		right =right + arr[i][i]
+		right = right + arr[i][i]
 		left = left + arr[i][indiceLeft]
 		indiceLeft--
 	}
+	return (left) - (right)
+}
 
+// Complete the divisibleSumPairs function below.
+func divisibleSumPairs(n int32, k int32, ar []int32) (r int32) {
 
-	return (left)- (right)
+	for i := 0; i < int(n); i++ {
+		for j := i; j < int(n); j++ {
+			if i == j {
+				continue
+			}
+			if (ar[j]+ar[i])%k == 0 {
+				r++
+			}
+		}
+	}
+	return r
 }
