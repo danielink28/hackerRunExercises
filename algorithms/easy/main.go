@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	values := []int32{99, 40, 53, 31, 92, 68, 17, 70, 100, 16, 26, 82, 72, 89, 19, 14, 56, 7, 26, 69, 8, 44, 51, 88, 24, 34, 40, 70, 90, 68, 95, 95, 28, 39, 71, 75, 31, 17, 96, 60, 98, 98, 33, 35, 68, 84, 17, 11, 76, 17, 45, 61, 72, 76, 18, 67, 55, 81, 57, 43, 45, 96, 58, 49, 4, 61, 38, 66, 82, 16, 44, 100, 50, 19, 82, 15, 72, 5, 81, 97, 94, 70, 7, 92, 75, 55, 1, 87, 4, 9, 92, 35, 83, 20, 53, 8, 90, 2, 92, 82}
+	//values := []int32{99, 40, 53, 31, 92, 68, 17, 70, 100, 16, 26, 82, 72, 89, 19, 14, 56, 7, 26, 69, 8, 44, 51, 88, 24, 34, 40, 70, 90, 68, 95, 95, 28, 39, 71, 75, 31, 17, 96, 60, 98, 98, 33, 35, 68, 84, 17, 11, 76, 17, 45, 61, 72, 76, 18, 67, 55, 81, 57, 43, 45, 96, 58, 49, 4, 61, 38, 66, 82, 16, 44, 100, 50, 19, 82, 15, 72, 5, 81, 97, 94, 70, 7, 92, 75, 55, 1, 87, 4, 9, 92, 35, 83, 20, 53, 8, 90, 2, 92, 82}
 	//plusMinus(values)
 	//staircase(66)
 	//miniMaxSum(values)
@@ -15,11 +15,15 @@ func main() {
 
 	//students := gradingStudents(values)
 
-	values2 := []int32{1, 3, 2, 6, 1, 2}
-	pairs := divisibleSumPairs(100, 32, values)
-	pairs2 := divisibleSumPairs(6, 3, values2)
-	fmt.Println(pairs)
-	fmt.Print(pairs2)
+	//values2 := []int32{1, 3, 2, 6, 1, 2}
+	//pairs := divisibleSumPairs(100, 32, values)
+	//pairs2 := divisibleSumPairs(6, 3, values2)
+	//fmt.Println(pairs)
+	//values := []int32{10, 5, 20, 20, 4 ,5 ,2 ,25, 1}
+	//values := []int32{3, 4, 21, 36, 10, 28, 35, 5, 24, 42}
+	//records := breakingRecords(values)
+	//fmt.Print(records)
+	fmt.Print(catAndMouse(1, 2, 3))
 }
 
 /*
@@ -206,4 +210,44 @@ func divisibleSumPairs(n int32, k int32, ar []int32) (r int32) {
 		}
 	}
 	return r
+}
+
+// Complete the breakingRecords function below.
+func breakingRecords(scores []int32) []int32 {
+	temp := []int32{0, scores[0], 0, 0}
+	for i, score := range scores {
+		if score > temp[0] {
+			temp[0] = score
+			if i > 0 {
+				temp[2] = temp[2] + 1
+			}
+		}
+		if score < temp[1] {
+			temp[1] = score
+			if i > 0 {
+				temp[3] = temp[3] + 1
+			}
+		}
+	}
+	return []int32{temp[2], temp[3]}
+}
+
+// Complete the catAndMouse function below.
+func catAndMouse(x int32, y int32, z int32) string {
+
+	diff1 := x - z
+	diff2 := y - z
+	if diff1 < 0 {
+		diff1 = diff1 * -1
+	}
+	if diff2 < 0 {
+		diff2 = diff2 * -1
+	}
+
+	if diff1 == diff2 {
+		return "Mouse C"
+	} else if diff1 > diff2 {
+		return "Cat B"
+	}
+	return "Cat A"
 }
