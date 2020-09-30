@@ -52,7 +52,6 @@ func (n *Nodo) add(value int) {
 			n.left = &Nodo{
 				value: value,
 			}
-
 		}
 	} else {
 		if n.right != nil {
