@@ -1,16 +1,12 @@
 package main
 
-import (
-	"fmt"
-)
-
 func main() {
 
-	values1 := []int32{5, 2, 3, 4, 1}
+	//values1 := []int32{5, 2, 3, 4, 1}
 	//values1 := []int32{-20, -3916237, -357920, -3620601, 7374819, -7330761, 30, 6246457, -6461594, 266854}
-	fmt.Print(closestNumbers(values1))
+	//fmt.Print(closestNumbers(values1))
 }
-
+/*
 // Complete the closestNumbers function below.
 func closestNumbers(arr []int32) (result []int32) {
 	root := Nodo{
@@ -73,3 +69,4 @@ func (n *Nodo) printInOrder(result *[]int) {
 		n.right.printInOrder(result)
 	}
 }
+*/
