@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"sort"
+	"strconv"
+	"strings"
 )
 
 func main() {
@@ -23,7 +25,8 @@ func main() {
 	//values := []int32{3, 4, 21, 36, 10, 28, 35, 5, 24, 42}
 	//records := breakingRecords(values)
 	//fmt.Print(records)
-	fmt.Print(catAndMouse(1, 2, 3))
+	//fmt.Print(catAndMouse(1, 2, 3))
+	fmt.Println(timeConversion("12:05:45AM"))
 }
 
 /*
@@ -193,7 +196,13 @@ func diagonalDifference(arr [][]int32) int32 {
 		left = left + arr[i][indiceLeft]
 		indiceLeft--
 	}
-	return (left) - (right)
+
+	result := (left) - (right)
+
+	if result < 0 {
+		result = result * -1
+	}
+	return result
 }
 
 // Complete the divisibleSumPairs function below.
@@ -250,4 +259,19 @@ func catAndMouse(x int32, y int32, z int32) string {
 		return "Cat B"
 	}
 	return "Cat A"
+}
+
+func timeConversion(s string) string {
+	split := strings.Split(s, ":")
+	pm := strings.Contains(split[2], "PM")
+	valueInt, _ := strconv.Atoi(split[0])
+	if pm {
+		if valueInt < 12 {
+			split[0] = strconv.Itoa(valueInt + 12)
+		}
+	} else if valueInt == 12 {
+		split[0] = "00"
+	}
+	split[2] = split[2][0:2]
+	return strings.Join(split, ":")
 }
